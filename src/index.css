@@ -1,0 +1,53 @@
+.logo {
+  text-align: center;
+  background-color: #9fb3df;
+  padding: 20px;
+  font-size: larger;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background-color: #9ec6f3;
+}
+
+.form input,
+.form select,
+.form button {
+  border: none;
+  border-radius: 20px;
+  height: 30px;
+}
+
+.form button:hover {
+  background-color: #dadadf;
+}
+
+.packingList {
+  background-color: #bddde4;
+  height: 50vh;
+  padding: 10px;
+}
+
+.listFooter {
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.stats {
+  background-color: #fff1d5;
+  padding: 20px;
+  font-size: large;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}

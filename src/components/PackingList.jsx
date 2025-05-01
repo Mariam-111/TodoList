@@ -1,6 +1,22 @@
 import React, { useState } from "react";
 
 const PackingList = ({ items, setItems }) => {
+  const [sortBy, setSortBy] = useState("input");
+
+  let sortedItems;
+
+  if (sortBy === "input") sortedItems = items;
+
+  if (sortBy === "description")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => a.description.localeCompare(b.description));
+
+  if (sortBy === "packed")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => Number(a.checked) - Number(b.checked));
+
   const handleToggleChecked = (id) => {
     setItems((prev) =>
       prev.map((item) =>
@@ -14,7 +30,7 @@ const PackingList = ({ items, setItems }) => {
       <div className="listElement">
         {" "}
         <ul>
-          {items.map((item) => (
+          {sortedItems.map((item) => (
             <li key={item.id}>
               <input
                 type="checkbox"
@@ -33,10 +49,15 @@ const PackingList = ({ items, setItems }) => {
         </ul>
       </div>
       <div className="listFooter">
-        <select name="itemSel" id="itemSel">
-          <option value="sortinput"> Sort By Input Order </option>
+        <select
+          name="itemSel"
+          id="itemSel"
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+        >
+          <option value="input"> Sort By Input Order </option>
           <option value="description"> Sort By Description </option>
-          <option value="toggle"> Sort By Toggle </option>
+          <option value="packed"> Sort By packed status </option>
         </select>
         <button onClick={() => setItems([])}>Clear</button>
       </div>
